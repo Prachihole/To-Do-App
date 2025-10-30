@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Smart To-Do</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      color: white;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      animation: fadeIn 1s ease;
+    }
+
+    .signup-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: scaleIn 0.8s ease;
+    }
+
+    .signup-container h2 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    input {
+      width: 85%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    button {
+      width: 90%;
+      padding: 12px;
+      margin-top: 15px;
+      background: white;
+      color: #2575fc;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ffeb3b;
+      color: #333;
+      transform: scale(1.05);
+    }
+
+    .login-link {
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    .login-link a {
+      color: #ffeb3b;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .login-link a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>✨ Create an Account</h2>
+    <input type="text" id="signup-username" placeholder="Username" />
+    <input type="password" id="signup-password" placeholder="Password" />
+    <input type="password" id="signup-confirm" placeholder="Confirm Password" />
+    <button id="signup-btn">Sign Up</button>
+
+    <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    const signupBtn = document.getElementById("signup-btn");
+
+    signupBtn.addEventListener("click", () => {
+      const username = document.getElementById("signup-username").value.trim();
+      const password = document.getElementById("signup-password").value.trim();
+      const confirm = document.getElementById("signup-confirm").value.trim();
+
+      if (!username || !password || !confirm)
+        return alert("Please fill all fields!");
+      if (password !== confirm)
+        return alert("Passwords do not match!");
+
+      const users = JSON.parse(localStorage.getItem("users")) || {};
+
+      if (users[username]) {
+        alert("Username already exists!");
+      } else {
+        users[username] = password;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Account created successfully!");
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+

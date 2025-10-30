@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🔹 Header -->
+  <header class="header">
+    <h1>📝 Smart To-Do List</h1>
+    <div class="user-area">
+      <span id="welcome-msg" class="welcome-text"></span>
+      <div id="user-menu" class="user-menu">
+        <button id="change-password-option">Change Password</button>
+        <button id="logout-option">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔹 Add Task Section -->
+  <section class="add-task-section">
+    <input type="text" id="task-input" placeholder="Enter your task..." />
+    <input type="datetime-local" id="task-deadline" />
+    <button id="add-btn">Add Task</button>
+  </section>
+
+  <!-- 🔹 Your Tasks -->
+  <section class="tasks-section">
+    <h2 id="your-tasks-title" class="toggle-title">📋 Your Tasks ⬇️</h2>
+    <ul id="task-list" class="task-list"></ul>
+  </section>
+
+  <!-- 🔹 Task History -->
+  <section class="history-section">
+    <h2 id="task-history-title" class="toggle-title">📚 Task History ⬇️</h2>
+    <ul id="history-list" class="history-list"></ul>
+  </section>
+
+  <!-- 🔹 Change Password Popup -->
+  <div id="change-password-popup" class="popup-overlay">
+    <div class="popup-box">
+      <span id="close-change-password" class="close-btn">&times;</span>
+      <h2>Change Password 🔐</h2>
+      <div class="popup-content">
+        <input type="password" id="current-password" placeholder="Current Password" />
+        <input type="password" id="new-password" placeholder="New Password" />
+        <input type="password" id="confirm-password" placeholder="Confirm New Password" />
+        <button id="save-password-btn">Save Password</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
